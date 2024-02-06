@@ -31,10 +31,12 @@ export default function Home(user) {
 
   useEffect(() => {
     async function fetchData() {
-      axios.get("http://127.0.0.1:5000/fund").then((res) => {
+      axios.get("http://localhost:5000/fund").then((res) => {
         setFundData(res.data);
         console.log(fundData);
-      });
+      }).catch(err => {
+        console.log(err)
+      })
     }
     fetchData();
   }, []);
@@ -128,7 +130,7 @@ export default function Home(user) {
               {/* Card for funding */}
 
               {fundData.map((data) => {
-                return <FundCard title={data.problem} username={data.username} desc={data.description} />;
+                return <FundCard title={data.problem} username={data.username} desc={data.description} verified={data.verified} />;
               })}
             </div>
           </div>

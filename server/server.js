@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
+require('dotenv').config()
 
 // middlewares
 app.use(cors())
@@ -23,7 +24,7 @@ async function dbConnect(url) {
 }
 
 dbConnect(
-  "mongodb+srv://Raj1001:Raj1001@cluster0.py102hu.mongodb.net/Funding?retryWrites=true&w=majority"
+  process.env.MONGODB_URI
 );
 
 const FundModel = mongoose.Schema({
@@ -32,6 +33,10 @@ const FundModel = mongoose.Schema({
   problem: String,
   description: String,
   walletAddress: String,
+  verified: {
+    type: Boolean,
+    default: false
+  }
 });
 
 const UserModel = mongoose.Schema({

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { TransactionContext } from "../../context/TransactionContext"
+import { TransactionContext } from "../../context/TransactionContext";
+import { MdVerified } from "react-icons/md";
 
 const Input = ({ placeholder, name, type, value, handleChange }) => (
   <input
@@ -12,8 +13,7 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
   />
 );
 
-export default function FundCard({title, username, desc}) {
-
+export default function FundCard({ title, username, desc, verified }) {
   const {
     connectWallet,
     currentAccount,
@@ -36,13 +36,19 @@ export default function FundCard({title, username, desc}) {
   return (
     <div>
       {/* Card for funding */}
-      
+
       <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism mt-10 m-1">
+        {verified ? (
+          <div className="w-20 text-white flex items-center justify-evenly">
+            <p>Verified</p>
+            <MdVerified />
+          </div>
+        ) : (
+          <></>
+        )}
         <h1 className="text-white text-xl">{title}</h1>
         <h3 className="text-white">Author: {username}</h3>
-        <p className="text-white my-5">
-          {desc}
-        </p>
+        <p className="text-white my-5">{desc}</p>
         {/* <Input
                 placeholder="Address To"
                 name="addressTo"
@@ -74,4 +80,3 @@ export default function FundCard({title, username, desc}) {
     </div>
   );
 }
-
