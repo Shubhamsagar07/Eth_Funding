@@ -14,6 +14,8 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Home from "./Pages/Home";
 import { useState } from "react";
+import Vision from "./Pages/Vision";
+import About from "./Pages/About";
 
 const App = () => {
   const [user, setUser] = useState(false)
@@ -33,6 +35,8 @@ const App = () => {
           <Route exact path='/login' element={<Login setUser={setUser}/>}>  </Route>
           <Route exact path='/register' element={<Register />}>  </Route>
           <Route exact path='/home' element={<Home user={user} />}>  </Route>
+          <Route exact path='/vision' element={<Vision user={user} />}>  </Route>
+          <Route exact path='/about' element={<About user={user} />}>  </Route>
         </Routes>
       </BrowserRouter>
       </Provider>
