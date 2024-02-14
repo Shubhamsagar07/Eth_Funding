@@ -19,10 +19,19 @@ const Navbar = (user) => {
         <h1 className="text-white text-3xl font-bold">ETH Funding.</h1>
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
-        {["About Us", "Team", "Vision"].map((item, index) => (
+        {/* {["About Us", "Team", "Vision"].map((item, index) => (
           <NavBarItem key={item + index} title={item} />
-        ))}
+        ))} */}
         {/* <li className={`mx-4 cursor-pointer`}> <Link to="/tools">Tool</Link> </li> */}
+        <li className="py-2 px-7 cursor-pointer">
+          <Link to="/about">About</Link>
+        </li>
+        <li className="py-2 px-7 cursor-pointer">
+          <Link to="/vision">Vision</Link>
+        </li>
+        <li className="py-2 px-7 cursor-pointer">
+          <Link to="/team">Team</Link>
+        </li>
         <li className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
           <Link to="/addFunding">Add Funding</Link>
         </li>
