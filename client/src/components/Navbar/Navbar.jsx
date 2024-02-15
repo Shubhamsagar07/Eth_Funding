@@ -18,10 +18,11 @@ const Navbar = (user) => {
         {/* <img src={logo} alt="logo" className="w-32 cursor-pointer" /> */}
         <h1 className="text-white text-3xl font-bold">ETH Funding.</h1>
       </div>
-      <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
-        {/* {["About Us", "Team", "Vision"].map((item, index) => (
-          <NavBarItem key={item + index} title={item} />
-        ))} */}
+      <ul>
+        {/* <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
+            {["About Us", "Team", "Vision"].map((item, index) => (
+              <NavBarItem key={item + index} title={item} />
+            ))} */}
         {/* <li className={`mx-4 cursor-pointer`}> <Link to="/tools">Tool</Link> </li> */}
         <li className="py-2 px-7 cursor-pointer">
           <Link to="/about">About</Link>
@@ -36,11 +37,11 @@ const Navbar = (user) => {
           <Link to="/addFunding">Add Funding</Link>
         </li>
         <div className="px-2">
-          <Link to="/login">login</Link>
+          <p>Hello {user.user.name}</p>
         </div>
         <div>
-          <Link to="/register">register</Link>
-        </div>{" "}
+          <Link to="/">logout</Link>
+        </div>
       </ul>
       <div className="flex relative">
         {!toggleMenu && (
@@ -60,7 +61,7 @@ const Navbar = (user) => {
         {toggleMenu && (
           <ul
             className="z-10 fixed -top-0 -right-2 p-3 w-[70vw] h-screen shadow-2xl md:hidden list-none
-            flex flex-col justify-start items-end rounded-md blue-glassmorphism text-white animate-slide-in"
+          flex flex-col justify-start items-end rounded-md blue-glassmorphism text-white animate-slide-in"
           >
             <li className="text-xl w-full my-2">
               <AiOutlineClose onClick={() => setToggleMenu(false)} />
