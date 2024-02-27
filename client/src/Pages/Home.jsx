@@ -92,8 +92,11 @@ export default function Home(user) {
               <div className="px-2">
                 <p>Hello {user.user.name}</p>
               </div>
+              <div className="px-2">
+                <Link to="/profile">Visit Dashboard</Link>
+              </div>
               <div>
-                <Link to="/">logout</Link>
+                <Link to="/">Logout</Link>
               </div>
             </ul>
             <div className="flex relative">
