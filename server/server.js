@@ -74,6 +74,16 @@ app.post("/register", (req, res) => {
     });
 });
 
+app.get("/userCampaign", (req, res) => {
+  Eth_Funding.find({email: req.query.email}, (err, data) => {
+    if (data) {
+      res.status(200).json(data)
+    } else {
+      res.status(200).json({"data": null})
+    }
+  })
+})
+
 app.post("/login", (req, res) => {
   User.findOne({'email': req.body.email}, (err, user) => {
     if (user){
