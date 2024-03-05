@@ -103,7 +103,7 @@ export default function Team(user) {
         </div>
         <div className="w-96 m-5 py-12 px-10 flex flex-col items-center font-body border-t-2 border-b-2 border-l-2 border-r-2 rounded-2xl">
           <h2>
-            <img src="/image3.jpeg " className=" w-40 h-44 rounded-lg"></img>
+            <img src="/image 6.jpeg " className=" w-40 h-44 rounded-lg"></img>
           </h2>
           <h2 className="p-1 text-white hover:border-blue-500 hover:bg-blue-500 w-40 rounded hover:font-semibold">
             Name : Raju Jakkani

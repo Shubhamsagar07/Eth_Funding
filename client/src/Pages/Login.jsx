@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import './style.css';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -32,18 +33,20 @@ export default function Login({setUser}) {
 
     return (
         <div className='container mt-5' style={{"width": "30vw"}}>
-            <h1 style={{"textAlign": "center"}} className='mb-5' >Login Page</h1>
+            <h1 style={{"textAlign": "center" }} className='mb-5' >Login Page</h1>
             <form>
                 {/* <!-- Email input --> */}
                 <div className="form-outline mb-4">
-                    <input type="email" id="form2Example1" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
                     <label className="form-label" for="form2Example1">Email address</label>
+                    <input type="email" 
+                    placeholder ="Email"id="form2Example1" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
 
                 {/* <!-- Password input --> */}
                 <div className="form-outline mb-4">
-                    <input type="password" id="form2Example2" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
                     <label className="form-label" for="form2Example2">Password</label>
+                    <input type="password" id="form2Example2" 
+                    placeholder ="password"className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
 
                 {/* <!-- 2 column grid layout for inline styling --> */}
