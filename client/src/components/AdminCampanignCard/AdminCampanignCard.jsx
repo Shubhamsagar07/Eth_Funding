@@ -1,38 +1,6 @@
-import React, { useContext } from "react";
-import { TransactionContext } from "../../context/TransactionContext";
 import { MdVerified } from "react-icons/md";
 
-const Input = ({ placeholder, name, type, value, handleChange }) => (
-  <input
-    placeholder={placeholder}
-    type={type}
-    step="0.0001"
-    value={value}
-    onChange={(e) => handleChange(e, name)}
-    className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-sm white-glassmorphism"
-  />
-);
-
-export default function FundCard({ title, username, desc, verified }) {
-  const {
-    connectWallet,
-    currentAccount,
-    formData,
-    setFormData,
-    handleChange,
-    sendTransaction,
-  } = useContext(TransactionContext);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { amount, keyword, message } = formData;
-    console.log(amount, keyword, message);
-
-    if (!amount || !message) return;
-
-    sendTransaction();
-  };
-
+export default function AdminCampanignCard({ title, username, desc, verified }) {
   return (
     <div>
       {/* Card for funding */}
@@ -50,24 +18,28 @@ export default function FundCard({ title, username, desc, verified }) {
         <h3 className="text-white">Author: {username}</h3>
         <p className="text-white my-5">{desc}</p>
         {/* <Input
-                placeholder="Address To"
-                name="addressTo"
-                type="text"
-                handleChange={handleChange}
-              /> */}
+           placeholder="Address To"
+           name="addressTo"
+           type="text"
+           handleChange={handleChange}
+           /> */}
+        {/*
         <Input
           placeholder="Amount (ETH)"
           name="amount"
           type="number"
           handleChange={handleChange}
         />
-        {/* <Input placeholder="Keyword (Gif)" name="keyword" type="text" handleChange={handleChange} /> */}
+
         <Input
           placeholder="Enter Message"
           name="message"
           type="text"
           handleChange={handleChange}
         />
+
+          * */}
+        {/* <Input placeholder="Keyword (Gif)" name="keyword" type="text" handleChange={handleChange} /> */}
         <div className="h-[1px] w-full bg-gray-400 my-2" />
         <button
           type="button"
@@ -78,5 +50,5 @@ export default function FundCard({ title, username, desc, verified }) {
         </button>
       </div>
     </div>
-  );
+  )
 }

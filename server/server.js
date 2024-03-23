@@ -102,6 +102,25 @@ app.get("/fund", (req, res) => {
   })
 })
 
+app.get("/activeFund", (req, res) => {
+  let activeFund = 0;
+  const fundData = Eth_Funding.find({}, (err, data) => {
+    data.forEach((item) => {
+      if (item.verified == true) {
+        activeFund = activeFund + 1;
+      }
+    })
+    res.send({"No": activeFund})
+  })
+})
+
+app.get("/user", (req, res) => {
+  User.find({}, (err, data) => {
+    res.send(data)
+  })
+})
+
+
 app.listen(5000, () => {
   console.log(`Example app listening on port ${5000}`);
 });

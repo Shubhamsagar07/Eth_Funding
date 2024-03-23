@@ -18,6 +18,7 @@ import Vision from "./Pages/Vision";
 import About from "./Pages/About";
 import Team from "./Pages/Team";
 import Profile from "./Pages/Profile";
+import Admin from "./Pages/Admin"
 
 const App = () => {
   const [user, setUser] = useState(false)
@@ -41,6 +42,7 @@ const App = () => {
           <Route exact path='/about' element={<About user={user} />}>  </Route>
           <Route exact path='/team' element={<Team user={user} />}>  </Route>
           <Route exact path='/profile' element={<Profile user={user}/>}>  </Route>
+          <Route exact path='/admin' element={<Admin />}>  </Route>
         </Routes>
       </BrowserRouter>
       </Provider>
