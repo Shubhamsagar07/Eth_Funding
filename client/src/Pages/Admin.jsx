@@ -10,40 +10,61 @@ export default function Admin() {
   const [campaign, setCampaign] = useState([]);
   const [user, setUser] = useState([]);
   const [activeFund, setActiveFund] = useState(0);
+  function getActiveCompaign() {
+    axios
+      .get("http://localhost:5000/fund")
+      .then((res) => {
+        if (res.data) {
+          setCampaign(res.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    axios
+      .get("http://localhost:5000/user")
+      .then((res) => {
+        console.log(res);
+        setUser(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    axios
+      .get("http://localhost:5000/activeFund")
+      .then((res) => {
+        console.log(res);
+        setActiveFund(res.data.No)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   useEffect(() => {
-    function getActiveCompaign() {
-      axios
-        .get("http://localhost:5000/fund")
-        .then((res) => {
-          if (res.data) {
-            setCampaign(res.data);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      axios
-        .get("http://localhost:5000/user")
-        .then((res) => {
-          console.log(res);
-          setUser(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      axios
-        .get("http://localhost:5000/activeFund")
-        .then((res) => {
-          console.log(res);
-          setActiveFund(res.data.No)
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
     getActiveCompaign();
   }, []);
+
+  function deleteFund(id) {
+    axios.post("http://127.0.0.1:5000/deleteFund", {id: id})
+         .then((res) => {
+           if (res) {
+             setCampaign(res.data);
+             getActiveCompaign()
+           }
+         })
+
+  }
+
+  function updateVerification(id, verified) {
+    axios.post("http://127.0.0.1:5000/updateVerification", {id: id, verified: verified})
+         .then((res) => {
+           if (res){
+             setCampaign(res.data)
+             getActiveCompaign()
+           }
+         })
+  }
 
   function handleSubmit() {
     if (password === "joker") {
@@ -80,10 +101,13 @@ export default function Admin() {
                   return (
 
                     <AdminCampanignCard
+                      _id={data._id}
                       title={data.problem}
                       username={data.username}
                       desc={data.description}
                       verified={data.verified}
+                      deleteFund={deleteFund}
+                      updateVerification={updateVerification}
                     />
                   );
                 })}
