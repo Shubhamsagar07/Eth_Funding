@@ -102,6 +102,41 @@ app.get("/fund", (req, res) => {
   })
 })
 
+app.post("/deleteFund", (req, res) => {
+  const fundId = req.body.id;
+
+  Eth_Funding.deleteOne({_id: fundId}, (err, data) => {
+    if (!err) {
+      Eth_Funding.find({}, (err, data) => {
+        res.send(data)
+      })
+    } else {
+      res.send({status: "error"})
+    }
+  })
+})
+
+app.post("/updateVerification", (req, res) => {
+  const fundId = req.body.id;
+  let updatedValue;
+  if (req.body.verified === true) {
+    updatedValue = false
+  }
+  else {
+    updatedValue = true
+  }
+
+
+  Eth_Funding.findOneAndUpdate({_id: fundId}, {verified: updatedValue}, (err, data) => {
+    if (!err) {
+      Eth_Funding.find({}, (err, data) => {
+        res.send(data)
+      })
+    }
+  })
+})
+
+
 app.get("/activeFund", (req, res) => {
   let activeFund = 0;
   const fundData = Eth_Funding.find({}, (err, data) => {
