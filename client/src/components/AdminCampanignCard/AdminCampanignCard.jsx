@@ -1,6 +1,7 @@
 import { MdVerified } from "react-icons/md";
 
-export default function AdminCampanignCard({ title, username, desc, verified }) {
+export default function AdminCampanignCard({ _id, title, username, desc, verified, deleteFund, updateVerification }) {
+
   return (
     <div>
       {/* Card for funding */}
@@ -43,11 +44,28 @@ export default function AdminCampanignCard({ title, username, desc, verified }) 
         <div className="h-[1px] w-full bg-gray-400 my-2" />
         <button
           type="button"
-          onClick={(e) => handleSubmit(e)}
+          onClick={() => deleteFund(_id)}
           className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] hover:bg-[#3d4f7c] rounded-full cursor-pointer"
         >
-          Donate
+          Delete
         </button>
+        {verified ?
+         <button
+           type="button"
+           onClick={(e) => updateVerification(_id, verified)}
+           className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] hover:bg-[#3d4f7c] rounded-full cursor-pointer"
+         >
+           Unverify
+         </button>
+         :
+         <button
+           type="button"
+           onClick={(e) => updateVerification(_id, verified)}
+           className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] hover:bg-[#3d4f7c] rounded-full cursor-pointer"
+         >
+           Verify
+         </button>
+        }
       </div>
     </div>
   )
