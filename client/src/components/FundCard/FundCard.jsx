@@ -13,7 +13,7 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
   />
 );
 
-export default function FundCard({ title, username, desc, verified }) {
+export default function FundCard({ _id, title, username, desc, verified, deleteFund, User }) {
   const {
     connectWallet,
     currentAccount,
@@ -76,6 +76,16 @@ export default function FundCard({ title, username, desc, verified }) {
         >
           Donate
         </button>
+        {User &&
+        <button
+          type="button"
+          onClick={(e) => deleteFund(_id)}
+          className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] hover:bg-[#3d4f7c] rounded-full cursor-pointer"
+        >
+         Delete
+        </button>
+
+        }
       </div>
     </div>
   );

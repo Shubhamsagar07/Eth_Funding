@@ -8,22 +8,36 @@ export default function Profile(user) {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [campaign, setCampaign] = useState(null);
 
+  async function getActiveCompaign() {
+    axios
+      .get("http://localhost:5000/userCampaign", {
+        params: { email: user.user.email },
+      })
+      .then((res) => {
+        console.log(res);
+        setCampaign(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   useEffect(() => {
-    async function getActiveCompaign() {
-      axios
-        .get("http://localhost:5000/userCampaign", {
-          params: { email: user.user.email },
-        })
-        .then((res) => {
-          console.log(res);
-          setCampaign(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
     getActiveCompaign();
   }, []);
+
+
+  function deleteFund(id) {
+    axios.post("http://127.0.0.1:5000/deleteFund", {id: id})
+         .then((res) => {
+           if (res) {
+             setCampaign(res.data);
+             getActiveCompaign()
+           }
+         })
+
+  }
+
   return (
     <div className="w-full h-screen text-white gradient-bg-welcome">
       <nav className="w-full flex md:justify-center justify-between items-center p-4">
@@ -118,10 +132,13 @@ export default function Profile(user) {
           campaign.map((data) => {
             return (
               <FundCard
+                _id={data._id}
                 title={data.problem}
                 username={data.username}
                 desc={data.description}
                 verified={data.verified}
+                deleteFund={deleteFund}
+                User={true}
               />
             );
           }):<></>}
