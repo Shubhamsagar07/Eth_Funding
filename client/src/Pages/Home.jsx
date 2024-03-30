@@ -90,7 +90,7 @@ export default function Home(user) {
                 <Link to="/addFunding">Add Funding</Link>
               </li>
               <div className="px-2">
-                <p>Hello {user.user.name}</p>
+                <p>Hello {user?.user?.name}</p>
               </div>
               <div className="px-2">
                 <Link to="/profile">Visit Dashboard</Link>
