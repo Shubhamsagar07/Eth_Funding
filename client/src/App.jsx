@@ -34,7 +34,7 @@ const App = () => {
           <Route exact path='/cryptocurrencies' element={<CryptocurrencyPage />}> </Route>
           <Route exact path='/crypto/:coinId' element={<CryptoDetailsPage />}> </Route>
           <Route exact path='/news' element={<Newspage />}>  </Route>
-          <Route exact path='/addFunding' element={<AddFunding />}>  </Route>
+          <Route exact path='/addFunding' element={<AddFunding user={user}/>}>  </Route>
           <Route exact path='/login' element={<Login setUser={setUser}/>}>  </Route>
           <Route exact path='/register' element={<Register />}>  </Route>
           <Route exact path='/home' element={<Home user={user} />}>  </Route>
