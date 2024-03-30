@@ -138,7 +138,7 @@ export default function Home(user) {
           <Welcome />
 
           <div className="flex flex-row flex-wrap flex-1 items-center justify-start w-full px-52 mf:mt-0 mt-10">
-            <h1 className="text-white text-[2.5rem] pt-10">
+            <h1 className="text-white text-[2.5rem] pt-10 px-52">
               Active Crowd Funding.
             </h1>
             <div className="flex flex-row flex-wrap">

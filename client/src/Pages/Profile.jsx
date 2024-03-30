@@ -25,7 +25,7 @@ export default function Profile(user) {
     getActiveCompaign();
   }, []);
   return (
-    <div className="w-full h-screen text-white gradient-bg-welcome">
+    <div className="w-full min-h-screen text-white gradient-bg-welcome">
       <nav className="w-full flex md:justify-center justify-between items-center p-4">
         <div className="md:flex-[0.5] flex-initial justify-center items-center">
           {/* <img src={logo} alt="logo" className="w-32 cursor-pointer" /> */}
