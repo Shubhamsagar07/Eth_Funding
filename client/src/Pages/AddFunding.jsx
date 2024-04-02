@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { Navbar, Footer, Services, Welcome } from "../components";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { AiOutlineClose } from "react-icons/ai";
+
+const NavBarItem = ({ title, classprops }) => (
+  <li className={`mx-4 cursor-pointer ${classprops}`}>{title}</li>
+);
 
 export default function AddFunding(user) {
   const [fullName, setFullName] = useState("");
@@ -9,6 +14,7 @@ export default function AddFunding(user) {
   const [problem, setProblem] = useState("");
   const [description, setDescription] = useState("");
   const [walletAddress, setWalletAddress] = useState("");
+  const [toggleMenu, setToggleMenu] = useState(true);
 
   function handleSubmit () {
     const data = {
